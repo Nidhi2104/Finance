@@ -1,0 +1,31 @@
+import yfinance as yf
+import pandas as pd
+
+
+portfolio = {
+    "DHATRE.BO" : 800,
+    "ELIN.BO" : 6,
+    "GLOBUSSPR.NS":10,
+    "HIMATSEIDE.BO": 120,
+    "TATAMOTORS.NS": 1,  
+    "BLKASHYAP.BO": 35,     
+    "DECNGOLD": 29,  
+    "BDH.BO" : 50
+}
+
+portfolio_data = []
+
+for stock, shares in portfolio.items():
+    try:
+        ticker = yf.Ticker(stock)
+        price = ticker.history(period="1d")["Close"].iloc[-1] 
+        portfolio_data.append({"Stock": stock, "Shares": shares, "Price": price, "Value": shares * price})
+    except Exception as e:
+        print(f"Error fetching data for {stock}: {e}")
+
+
+df = pd.DataFrame(portfolio_data)
+
+
+print(df)
+print("\nTotal Portfolio Value: ₹", df["Value"].sum())
