@@ -22,5 +22,5 @@ Example Stocks Used:
 This project works with stocks from multiple exchanges. You can track:
 
 USA Stocks (AAPL, TSLA, MSFT)
-Indian Stocks (RELIANCE.NS, INFY.NS)
+Indian Stocks (RELIANCE.NS, INFY.NS, DECNGOLD.BO), where NS is used for NSE and BO for BSE.
 Simply modify the stock symbols in the Python script.
