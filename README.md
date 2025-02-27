@@ -30,7 +30,10 @@ Once the script runs, you will be able to view:
 **Example Stocks Used**
 
 This project works with stocks from multiple exchanges. You can track:
+
 USA Stocks: AAPL, TSLA, MSFT
+
 Indian Stocks: RELIANCE.NS, INFY.NS, DECNGOLD.BO
 (Use .NS for NSE and .BO for BSE stocks in India)
+
 **Simply modify the stock symbols in the Python script to track your custom portfolio!** 
