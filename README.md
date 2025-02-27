@@ -6,26 +6,32 @@ A simple tool to track the value of a stock portfolio using Python and yfinance.
 - Fetches live stock data using yfinance
 - Calculates portfolio value dynamically based on holdings
 - Computes key portfolio metrics:
-   > Expected Annual Return
-   > Portfolio Volatility
+   > Expected Annual Return,
+   > Portfolio Volatility,
    > Sharpe Ratio
 - Plots portfolio value trends over time
   
 **Installation & Usage**
 
 1. Install Dependencies
+   
 First, install the required Python libraries:
+
 pip install pandas yfinance matplotlib numpy
 
-3. Run the Script
+2. Run the Script
+   
 Run the script to fetch stock prices, calculate metrics, and generate reports:
+
 python portfolio_tracker.py
 
-4. View the Report
+3. View the Report
+   
 Once the script runs, you will be able to view:
--Portfolio Value & Holdings
--Performance Metrics
--Stock Price & Portfolio Trends (Graph)
+
+- Portfolio Value & Holdings
+- Performance Metrics
+- Stock Price & Portfolio Trends (Graph)
 
 **Example Stocks Used**
 
