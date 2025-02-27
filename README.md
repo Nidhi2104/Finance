@@ -6,9 +6,9 @@ A simple tool to track the value of a stock portfolio using Python and yfinance.
 - Fetches live stock data using yfinance
 - Calculates portfolio value dynamically based on holdings
 - Computes key portfolio metrics:
-   >Expected Annual Return
-   >Portfolio Volatility
-   >Sharpe Ratio
+   > Expected Annual Return
+   > Portfolio Volatility
+   > Sharpe Ratio
 - Plots portfolio value trends over time
   
 **Installation & Usage**
