@@ -1,0 +1,61 @@
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+portfolio = {
+    "DHATRE.BO": 800,
+    "ELIN.BO": 6,
+    "GLOBUSSPR.NS": 10,
+    "HIMATSEIDE.BO": 120,
+    "TATAMOTORS.NS": 1,
+    "BLKASHYAP.BO": 35,
+    "DECNGOLD.BO": 29,
+    "BDH.BO": 50
+}
+
+
+returns_data = {}
+
+
+for stock in portfolio.keys():
+    try:
+        ticker = yf.Ticker(stock)
+        hist = ticker.history(period="1y")["Close"]
+        returns_data[stock] = hist.pct_change().dropna()  # Compute daily returns
+    except Exception as e:
+        print(f"Error fetching data for {stock}: {e}")
+
+
+returns_df = pd.DataFrame(returns_data).dropna()
+
+
+returns_df = returns_df[(returns_df > -1) & (returns_df < 1)]
+
+
+weights = np.array([portfolio[stock] for stock in returns_df.columns])  # Shares owned
+weights = weights / weights.sum()  # Normalize weights
+portfolio_daily_return = returns_df.dot(weights)
+
+
+annual_return = portfolio_daily_return.mean() * 252  # Adjust for trading days
+annual_volatility = portfolio_daily_return.std() * np.sqrt(252)
+
+
+risk_free_rate = 0.03  # Adjusted to 3% based on market conditions
+sharpe_ratio = (annual_return - risk_free_rate) / annual_volatility
+
+
+print(f"\n📊 Portfolio Metrics:")
+print(f"📈 Expected Annual Return: {annual_return:.2%}")
+print(f"📉 Portfolio Volatility: {annual_volatility:.2%}")
+print(f"⚡ Sharpe Ratio: {sharpe_ratio:.2f}")
+
+plt.figure(figsize=(10, 5))
+plt.bar(returns_df.columns, weights * 100, color="skyblue")
+plt.xlabel("Stock")
+plt.ylabel("Portfolio Allocation (%)")
+plt.title("Portfolio Weight Distribution")
+plt.xticks(rotation=45)
+plt.show()
